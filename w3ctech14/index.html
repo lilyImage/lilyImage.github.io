@@ -1,0 +1,455 @@
+<!doctype html>
+<html>
+
+	<head>
+		<meta charset="utf-8">
+
+		<title>移动web开发初级攻略</title>
+
+		
+		<meta name="author" content="lilyh">
+
+		<meta name="apple-mobile-web-app-capable" content="yes" />
+		<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+
+		<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no">
+
+		<link rel="stylesheet" href="css/reveal.min.css">
+		<link rel="stylesheet" href="css/default.css" id="theme">
+
+		<!-- For syntax highlighting -->
+		<link rel="stylesheet" href="lib/css/zenburn.css">
+	</head>
+
+	<body>
+
+		<div class="reveal">
+
+			<div class="slides">
+			
+				
+					<section  data-background="#327a3d">
+						<img width="150" style="position:absolute;left:10px;top:10px" src="img/head.jpg" />
+						<h2>lilyH</h2>
+						<p>爱自由，不爱束缚；<p>
+						<p>爱冲动，也爱计划；</p>
+						<p>享受生活，追求完美；</p>
+						<p>爱体育，最爱梅西；</p>
+						<p>我不是别人，</p>
+						<p>我就是奇舞团的郝黎</p>
+					</section>
+					<section data-background="#327a3d">
+						<h2>移动web开发初级攻略</h2>
+					</section>
+					<section data-background="#327a3d">
+						<ul>
+							<li>关于布局</li>
+							<li>关于图片、文字</li>
+							<li>关于动画</li>
+							<li>关于事件</li>
+							<li>其他特殊问题</li>
+						</ul>
+					</section>
+					<section data-background="#003359">
+						<h2>关于布局</h2>
+						<h3>技能推荐：Flexbox</h3>
+					</section>
+					<section data-background="#003359">
+						<div style="float:left"><img src="img/1.png"></div>
+						<div style="float:right"><img src="img/2.png"></div>
+						<!--
+						<ol style="margin-left:300px;margin-top:150px;">
+							<li>(1)当页面上内容不足一屏的时候，在最底部显示</li>
+							<li>(2)当页面上内容不止一屏的时候，也就是有垂直滚动条的时候，要在内容的最后显示</li>
+						</ol>
+						-->
+					</section>
+					<section data-background="#003359">
+						
+						<ul>
+							<li>position:absolute/relative,不能解决
+							</li>
+							<li>position:fixed,有缺陷(什么缺陷，补充)</li>
+						</ul>
+
+						<br/>
+						
+						<p data-height="288" data-theme-id="7246" data-slug-hash="Jluax" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/lilyH/pen/Jluax/'>Jluax</a> by lilyH (<a href='http://codepen.io/lilyH'>@lilyH</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+						<script async src="lib/js/ei.js"></script>
+
+					</section>
+					<section data-background="#003359">
+						<p>解决问题：</p>
+						<ol>
+							<li>能够方便的实现固定头部、尾部的需求</li>
+							<li>能够满足中间内容不足一屏的时候也能够撑满整个页面</li>
+						</ol>
+						<p>提醒：flexbox的各种不同版本的写法，<a target="_blank" href="http://www.cnblogs.com/lilyimage/p/3682810.html">详情</a></p>
+					</section>
+					
+					<section data-background="#a60095">
+							<h2>关于图片和文字</h2>
+					</section>
+					<section data-background="#a60095">
+						<h2>图片</h2>
+					</section>
+					<section data-background="#a60095">
+					
+							<p>(1)meta的设置</p>
+							<pre><code>&lt;meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no"&gt;
+							</code></pre>
+							<div class="fragment">表示：强制让文档的宽度与设备的宽度保持1:1，并且文档最大的宽度比例是1.0，且<strong style="text-decoration:underline">不允许用户点击屏幕放大浏览</strong></div>
+						
+					</section>
+					<section data-background="#a60095">
+							<p>(2)非背景图的图片设置——简单处理</p>
+							<ol>
+								
+								<li class="fragment">一个概念：设备像素比（devicePixelRatio） = 实际的物理像素/显示像素</li>
+								<li class="fragment"><p>比如：设备像素比：2</p>
+								<img src="img/7.png"></li>
+								<li class="fragment">假如需要100×100的图片，那么从设计稿(宽为640)上截取200×200的大小</li>
+								<li class="fragment">宽720的设计稿 ，为了满足显示像素为360的屏幕</li>
+							</ol>
+					</section>
+					<section data-background="#a60095">
+
+							<p>(3)背景图的图片设置</p>
+							
+							<p>把图片作为background,</p>
+							<p>保证图片在各种尺寸手机上在都铺满;</p>
+							
+							<div class="fragment">
+							<pre><code>background-image: url(http://p7.qhimg.com/t017c6559389bf81e29.png);
+background-size: 100% auto;//充满整个屏幕，宽大于高的图片
+background-repeat: no-repeat;
+							</code></pre>
+							<p>牺牲了一些高分辨率的体验:<a target="_blank" href="example/test.html">例子</a></p>
+							</div>
+
+					</section>
+					<section data-background="#73173f">
+							<h2>文字</h2>
+							<p>建议：</p>
+							<div class="fragment">
+							<p>(1)设置body的基准大小</p>
+							<PRE><code>body:{font: normal 62.5% tahoma,arial,"Microsoft YaHei",SimSun,sans-serif;}
+							</code></PRE>
+							</div>
+							<div class="fragment">
+							<p>(2)设计稿上文字为16px，那么</p>
+							<pre><code>p : {font-size:16px;font-size:1.6rem}/*(16/10=1.6)*/
+							</code></pre>
+							<p>em,rem的区别</p>
+							</div>
+					</section>
+					<section data-background="#73173f">
+						<div>浏览器的默认字体高是16px,16px*62.5%=10px</div>
+						<ul class="fragment">
+							<li>px:相对屏幕分辩率 16</li>
+							<li>em:相对父元素的大小 16/10=1.6</li>
+							<li>rem:相对基准元素大小(css3属性) 16/10=1.6</li>
+						</ul>
+					</section>
+					<section data-background="#810091"><h2>关于动画</h2></section>
+					<section data-background="#810091"><h3>核心：尽量避免reflow和repaint</h3></section>
+					<section data-background="#810091">
+						<div class="fragment">
+						<p>(1)能使用transition的不使用Animation动画（@keyframes）</p>
+						
+<pre><code>-webkit-transition: all 1.5s ease;</code></pre>
+<pre><code>.anim{
+	-webkit-animation-name:loading;
+	-webkit-animation-duration: 1.5s;
+	-webkit-animation-iteration-count: infinite;
+	-webkit-animation-timing-function: linear;
+}
+@-webkit-keyframes loading{
+	from {-webkit-transform:rotate(0deg)}
+	to {-webkit-transform:rotate(360deg)}
+}
+</code></pre>
+</div>
+						
+						<div class="fragment">(2)检查动画元素的position,尽量用absolute布局</div>
+						<div class="fragment"><p>(3)使用translate3d(0,0,0),强制浏览器进行硬件加速；不要使用过多，以免崩溃</p>
+<pre><code>-webkit-transform: translateZ(0);
+-webkit-backface-visibility:hidden;
+-webkit-perspective:1000;</code></pre>
+</div>
+						
+					</section>
+					<section data-background="#009440">
+						<h2>关于事件</h2>
+					</section>
+					<section data-background="#009440">
+						<h3>建议：事件绑定到确定的元素上去</h3>
+					</section>
+					<section  data-background="#009440">
+						<p>(1)事件代理的方式：在触摸屏幕的时候，浏览器给出的范围是事件代理的父元素，无法定位到具体到触摸元素</p>
+<pre><code>html:
+<ul>
+	<li>第一行</li>
+	<li>第二行</li>
+	<li>第三行</li>
+</ul>
+js:
+$('ul').delegate('li','click',function(e){
+  alert("aaaa");
+});
+</code></pre>
+<img src="img/5.png">
+					</section>
+					<section  data-background="#009440">
+						<p>(2)使用CSS属性去掉浏览器原生的样式，添加自定义属性</p>
+						<pre><code>.logo{
+	-webkit-tap-highlight-color: rgba(0,0,0,0);
+	-webkit-tap-highlight-color: transparent; /* For some Androids */
+}
+.logo:active{
+	-webkit-transform: scale3d(0.9, 0.9, 1);//需要自定义一个active的动作
+}
+						</code></pre>
+						<p style="font-size:0.6em">注意：还需要在html上动点手脚,添加ontouchstart="return true;"</p>
+						<pre><code><a class="logo" href="javascript:void(0);" ontouchstart="return true;"></a>
+						</code></pre>
+					</section>
+					<section  data-background="#009440">
+						<h3>click的300ms延迟</h3>
+					</section>
+					<section data-background="#009440">
+						<img src="img/click300.png" />
+					</section>
+					<section  data-background="#009440">
+						<p>建议：不使用zepto的touch模块，改用fastclick或者其他代码比如tappy或者tap.js</p>
+<pre><code>window.addEventListener( "load", function() {
+  FastClick.attach( document.body );
+}, false );
+//页面的click事件再也没有300ms延迟的烦恼
+//原理是：在touchEnd事件之后，立马实现一个合成的click事件并且阻止掉300ms以后那个真正的click事件
+</code></pre>
+<pre><code>//100行的小代码
+//https://github.com/filamentgroup/tappy/
+$( "a.my-link" ).bind( "tap", function( e ){ 
+  alert( "tap!" );
+});
+//用实现的tap事件代替click事件
+</code></pre>
+					</section>
+					<section>
+						<h2>其他特殊问题</h2>
+					</section>
+					<section>
+						<ul>
+							<li class="fragment">android2.3.*不支持overflow:auto/scroll；一律被认为是overflow:hidden</li>
+							<li class="fragment">android2.3.*当input="password"时候，会出奇怪的问题
+								<img src="img/6.png">
+						<p>解决方案：</p>
+<code>(1) 用input="text"代替input="password"
+	(2)input.password-field{-webkit-text-security:disc;}
+</code>
+							</li>
+						</ul>
+					</section>
+					<section data-background="#327a3d">
+						<h2>初级攻略+</h2>
+					</section>
+					<section data-background="#327a3d">
+						<h3>在基本的移动网页构建出来之后，我们应该如何组织这些单独的页面呢？</h3>
+					</section>
+					<section>
+						<h3>多页面之间跳转</h3>
+						<ul>
+							<li>优点：开发简单、维护简单</li>
+							<li>缺点：用户体验欠缺</li>
+						</ul>
+					</section>
+					<section>
+						<h3>单页应用</h3>
+						<ul>
+							<li>优点: 体验好、接近原生</li>
+							<li>缺点: 开发复杂、维护复杂</li>
+						</ul>
+					</section>
+					<section>
+						<ol>
+							<li>项目时间紧张、不需要长期维护的情况下；多页</li>
+							<li>项目时间略微充裕、需要长期维护、要求精致、讲究用户体验；单页</li>
+						</ol>
+					</section>
+					<section>
+						<ul>
+							<li>关于视图布局</li>
+							<li>关于视图切换</li>
+						</ul>
+			
+
+		</section>
+
+<section>
+<h3 class="fragment">布局核心：多层叠加</h3>
+<h3 class="fragment">切换核心：层之间的transition</h3>
+</section>
+
+<section>
+<h2>布局</h2>
+<pre><code>
+<style>
+.page{
+  position:absolute;left:0;top:0;
+  width:100%;height:100%
+}
+</style>
+<div class="page"></div></code>
+</pre>
+<p class="fragment">
+  就是这么简单！
+</p>
+</section>
+
+<section>
+<h2>切换</h2>
+<pre><code>
+//利用CSS的transform属性
+ -webkit-transform: translate3d(-100%, 0, 0);
+ transform: translate3d(-100%, 0, 0);
+</code></pre>
+<p>又是这么简单！</p>
+<p class="fragment">另外：利用hash来表示不同的页面层</p>
+<p class="fragment">通过hash的变化来达到切换层的效果；</p>
+<p class="fragment">通过后面的例子详细看看</p>
+</section>
+
+<section>
+<h2>侧边栏</h2>
+<img src="img/8.png" />
+</section>
+
+<section>
+<h2>侧边栏布局</h2>
+<pre><code>
+<style>
+.nav,.main{
+	position:absolute;
+       left:0;top:0px;
+       width:100%;height:100%
+}
+</style>
+<div class="container">
+   <div class="nav"></div>
+   <div class="main">
+      <a href="#nav">nav</a>
+   </div>
+</div>
+</code></pre>
+</section>	
+
+<section>
+<h2>侧边栏切换</h2>
+<a target="_blank" href="example/nav.html">demo</a>
+<div class="fragment">
+   控制第一层滑动的距离，使侧边栏显示与隐藏；
+</div>
+</section>
+
+<section>
+<h2>多视图</h2>
+<img src="img/9.png" />
+</section>
+
+<section>
+<h2>多视图布局</h2>
+<pre><code>
+<style>
+.page{
+    position:absolute;
+    left:0;top:0;
+    width:100%;height:100%;   
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.page.left {
+    -webkit-transform: translate3d(-100%, 0, 0);
+    transform: translate3d(-100%, 0, 0);
+}
+.page.center {
+    -webkit-transform: translate3d(0, 0, 0);
+    transform: translate3d(0, 0, 0);
+}
+.page.right {
+    -webkit-transform: translate3d(100%, 0, 0);
+    transform: translate3d(100%, 0, 0);
+}
+.page.transition {
+    -webkit-transition-duration: .25s;
+    transition-duration: .25s;
+}
+</style>
+<div class="container">
+  <div class="page"></div>
+  <div class="page right"></div>
+  <div class="page right"></div>
+</div>
+</code></pre>
+</section>
+
+<section>
+<h2>多视图切换</h2>
+<a target="_blank" href="example/page.html">demo</a>
+<div class="fragment">
+   控制下一层与当前层的滑动，达到层之间切换的效果；
+</div>
+</section>
+
+<section>
+	<h2>flex + 单页面</h2>
+	<p data-height="268" data-theme-id="7246" data-slug-hash="kuJgy" data-default-tab="result" class='codepen'>See the Pen <a href='http://codepen.io/lilyH/pen/kuJgy/'>kuJgy</a> by lilyH (<a href='http://codepen.io/lilyH'>@lilyH</a>) on <a href='http://codepen.io'>CodePen</a>.</p>
+	<script async src="lib/js/ei.js"></script>
+</section>
+
+<section>
+	<h2>最后一个<a target="_blank" href="example/demo.html">demo</a> </h2>
+</section>
+
+<section>
+	<p>参考资料</p>
+	<ul>
+		<li><a href="http://www.cnblogs.com/lilyimage/p/3682810.html">flexbox</a></li>
+		<li><a href="http://www.zhangxinxu.com/wordpress/2012/08/window-devicepixelratio/">设备像素比</a></li>
+	</ul>
+</section>
+
+<section>
+	<h2>Q&A</h2>
+	<p>联系我：
+		<a style="background:url(img/weibo.png) no-repeat;background-size:auto 30px;display:inline-block;width:45px;height:30px;" href="http://weibo.com/lilyimage"></a>
+		<a style="background: url(img/linkedin.png) no-repeat;background-position:0px 10px;
+display: inline-block;
+width: 95px;
+height: 42px;" href="http://www.linkedin.com/profile/view?id=169236197&trk=nav_responsive_tab_profile_pic"></a></p>
+</section>
+
+</div>
+</div>
+
+		<script src="lib/js/head.min.js"></script>
+		<script src="js/reveal.min.js"></script>
+
+		<script>
+
+		
+			Reveal.initialize({
+				controls: false,
+				progress: true,
+				history: true,
+				center: true,
+				transition: 'linear', 
+				dependencies: [
+					{ src: 'plugin/highlight/highlight.js', async: true, callback: function() { hljs.initHighlightingOnLoad(); } }
+				]
+			});
+
+		</script>
+
+	</body>
+</html>
