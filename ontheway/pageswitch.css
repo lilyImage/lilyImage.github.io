@@ -18,13 +18,13 @@
     transition-duration: .5s;
 }
 
-.page.left30 {
-    -webkit-transform: translate3d(-30%, 0, 0);
-    transform: translate3d(-30%, 0, 0);
+.page.left40 {
+    -webkit-transform: translate3d(-40%, 0, 0);
+    transform: translate3d(-40%, 0, 0);
 }
-.page.right30 {
-    -webkit-transform: translate3d(30%, 0, 0);
-    transform: translate3d(30%, 0, 0);
+.page.right40 {
+    -webkit-transform: translate3d(40%, 0, 0);
+    transform: translate3d(40%, 0, 0);
 }
 .page.right100{
     -webkit-transform: translate3d(100%, 0, 0);

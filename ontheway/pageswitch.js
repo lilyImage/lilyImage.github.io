@@ -86,8 +86,8 @@ function PageSwitcher(){
  */
 PageSwitcher.prototype.sideStateArr = [];
 PageSwitcher.prototype.sideSlide = function(el){
-    this.dir = 'right30';
-    this.reverseDir = 'left30';
+    this.dir = 'right40';
+    this.reverseDir = 'left40';
     this.el = el ? el : '.switch-page-main';
     var self = this;
     if(self.sideStateArr.length == 0){
