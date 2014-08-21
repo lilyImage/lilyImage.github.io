@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>lilyh</title>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
+    <link rel="stylesheet" href="pageswitch.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+<section class="side">
+    <div class="page">
+        <ul>
+            <li>
+                <h3>(1)单页应用切换效果</h3>
+                <a href="https://github.com/lilyImage/pageSwitch">https://github.com/lilyImage/pageSwitch</a>
+            </li>
+        </ul>
+    </div>
+</section>
+<section class="switch-page-main">
+    <div class="page center">
+        <header><a class="side-icon"><img src="http://p1.qhimg.com/t0123384af99b508a45.png" /></a><h1>在路上</h1></header>
+        <section class="content page1-content">
+            <ul>     
+                <li>
+                    <a href="#page2" data-type='xian'>
+                        <img src="http://p9.qhimg.com/dr/120_120_/t0156a4bcd5d39477f9.jpg" />
+                        <div>
+                            <p><h3>西安</h3><p class="time">2014-08-13~2014-08-17</p></p>
+                            <span>大雁塔</span>
+                            <span>钟楼、鼓楼</span>
+                            <span>回民街</span>
+                            <span>兵马俑</span>
+                            <span>华清池</span>
+                            <span>结婚</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page2" data-type="dalian">
+                        <img src="http://p2.qhimg.com/dr/120_120_/t017094848b15d2542e.jpg" />
+                        <div>
+                            <p><h3>大连</h3><p class="time">2014-05-03~2014-05-05</p></p>
+                            <span>老虎滩海洋公园</span>
+                            <span>金石滩黄金海岸</span>
+                            <span>俄罗斯风情街</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page2" data-type="taiwan">
+                        <img src="http://p3.qhimg.com/dr/120_120_/d/inn/b6c38cb6/IMG_20140211_151229.jpg" />
+                        <div>
+                            <p><h3>台湾</h3><p class="time">2014-02-10~2014-02-17</p></p>
+                            <span>东海大学</span>
+                            <span>逢甲夜市</span>
+                            <span>西子湾</span>
+                            <span>大狗英领事馆</span>
+                            <span>六合夜市</span>
+                            <span>垦丁</span>
+                            <span>台北诚品</span><span>国父纪念馆</span><span>西门町</span><span>台北101</span>
+                        </div>
+                    </a>
+                </li>
+            </ul>
+        </section>
+    </div>
+    <div class="page center">
+        <header><a class="back-btn" href="#page1"></a></header>
+        <section class="content page2-content"></section>
+    </div>
+</section>
+<script src="zepto.min.js"></script>
+<script src="pageswitch.js"></script>
+<script>
+    var curHash = window.location.hash || '#page1',
+        hashs = ['#page1','#page2','#page3'];
+    
+    var pageSlider = new PageSwitcher();
+    $(window).on('hashchange', function(){
+        pageSlider.switchPage();//切换page
+    });
+    pageSlider.init({
+        curHash: curHash,
+        hashs : hashs
+    });
+</script>
+<script type="text/javascript">
+    $('.page1-content li a').on('click',function(e){
+        var id = $(this).data('type');
+        var data = {
+            'xian' : '敬请期待西安',
+            'dalian' : '敬请期待大连',
+            'taiwan' : '敬请期待台湾'
+        }
+        var page2MainEl = $('.page2-content');
+        var innerHtml = '<div>'+data[id]+'</div>'
+        page2MainEl.html(innerHtml);
+    });
+    $('.side-icon').on('click',function(e){
+        pageSlider.sideSlide();
+    });
+</script>
+</body>
+</html>
