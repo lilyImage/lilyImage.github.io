@@ -24,9 +24,9 @@ function XIAN(){
     instance.constructor = XIAN; 
     //其他初始化 
     instance.start = function(){
-        instance.page2MainEl.html('');
         if(!WAYCON.init){
             WAYCON.init = true;
+            instance.page2MainEl.html('');
             var width = $(window).width()-20,height=$(window).height()-50;
             var svg = d3.select(".page2-content").append("svg")
                        .attr("width", width)
