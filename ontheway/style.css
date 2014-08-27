@@ -18,7 +18,7 @@ a {
 ul,li{list-style: none;margin:0;padding: 0}
 div,span,p{margin:0;}
 header{
-    height: 40px;
+    min-height: 40px;
     background-color: #62bb50;
 }
 header h1{
@@ -78,7 +78,12 @@ header h1{
     left: 0;right: 0;top: 0;bottom: 0;
     width: 100%;
     height: 100%;
-    overflow-x: hidden;
+    overflow: hidden;
+}
+.switch-page-main .page{
+    position: absolute;
+    left: 0;right: 0;top: 0;bottom: 0;
+    width: 100%;height: 100%;
 }
 .switch-page-main .wrap{
     display:flex;
@@ -87,10 +92,10 @@ header h1{
     flex-flow: column nowrap; 
 }
 .switch-page-main .content{
-    height: 100%;
     width: 100%;
     background-color: #ECECEC;
     flex-grow:1;
+    overflow: auto;
 }
 .switch-page-main .content li{
     position: relative;
