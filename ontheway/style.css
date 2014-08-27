@@ -119,3 +119,14 @@ header h1{
     border-radius: 5px;
     margin: 5px 5px 5px 0;
 }
+
+/**SVG*/
+.node {
+  stroke: #fff;
+  stroke-width: 1.5px;
+}
+
+.link {
+  stroke: #999;
+  stroke-opacity: .6;
+}

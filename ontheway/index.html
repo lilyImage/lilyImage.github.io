@@ -53,7 +53,7 @@
                     <a href="#page2" data-type="taiwan">
                         <img src="http://p3.qhimg.com/dr/120_120_/d/inn/b6c38cb6/IMG_20140211_151229.jpg" />
                         <div class="location">
-                            <div><h3>台湾</h3><p class="time">2014-02-10~2014-02-17</p></div>
+                            <div><h3>台湾、香港</h3><p class="time">2014-02-10~2014-02-17</p></div>
                             <span>东海大学</span>
                             <span>逢甲夜市</span>
                             <span>西子湾</span>
@@ -61,7 +61,24 @@
                             <span>六合夜市</span>
                             <span>垦丁</span>
                             <span>台北诚品</span><span>国父纪念馆</span><span>西门町</span><span>台北101</span>
+                            <span>维多利亚港</span><span>星光大道</span><span>尖沙咀</span>
                         </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page2" data-type="chengdu">
+                        <img src="http://p5.qhimg.com/t01f83a19dc696e8f32.jpg">
+                        <div class="location">
+                            <div><h3>四川</h3><p class="time">2013国庆</p></div>
+                            <span>成都大熊猫基地</span><span>青城山</span>
+                            <span>都江堰</span><span>石棉安顺场</span>
+                        </div>
+                    </a>
+                </li>
+                <li>
+                    <a href="#page2" data-type="xiamen">
+                        <img src="http://p4.qhimg.com/d/inn/05bb78fd/630098d8jw1e3hgdicju1j.jpg">
+                        <div class="location"><h3>厦门、上海</h3><p class="time"></p></div>
                     </a>
                 </li>
             </ul>
@@ -87,18 +104,95 @@
         hashs : hashs
     });
 </script>
+<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script type="text/javascript">
     $('.page1-content li a').on('click',function(e){
         var id = $(this).data('type');
         var data = {
-            'xian' : '敬请期待西安',
-            'dalian' : '敬请期待大连',
-            'taiwan' : '敬请期待台湾'
-        }
-        var page2MainEl = $('.page2-content');
-        var innerHtml = '<div>'+data[id]+'</div>'
-        page2MainEl.html(innerHtml);
+            'xian' : xian,
+            'dalian' : dalian,
+            'taiwan' : taiwan,
+        };
+        $('.dalian').hide();
+        $('.taiwan').hide();
+        $('.xian').hide();
+        //var page2MainEl = $('.page2-content');
+        var func = data[id]();
+        setTimeout(function(){func.start();},500);
+       
     });
+    var xian = function(){
+        function start(){
+            $('.xian').show();
+            var width = $(window).width(),height=$(window).height();
+            var svg = d3.select(".page2-content").append("svg")
+                       .attr("width", width)
+                       .attr("height", height)
+                       .attr("class","xian");
+            
+
+            var color = d3.scale.category20();
+
+            var force = d3.layout.force()
+                .charge(-200)
+                .linkDistance(50)
+                .size([width, height]);
+
+            d3.json("cp.json", function(error, graph) {
+              force
+                  .nodes(graph.nodes)
+                  .links(graph.links)
+                  .start();
+
+              var link = svg.selectAll(".link")
+                  .data(graph.links)
+                  .enter().append("line")
+                  .attr("class", "link")
+                  .style("stroke-width", function(d) { return Math.sqrt(d.value); });
+
+              var node = svg.selectAll(".node")
+                  .data(graph.nodes)
+                  .enter().append("circle")
+                  .attr("class", "node")
+                  .attr("r", 5)
+                  .style("fill", function(d) { return color(d.group); })
+                  .call(force.drag);
+
+              node.append("title")
+                  .text(function(d) { return d.name; });
+              
+              force.on("tick", function() {
+                link.attr("x1", function(d) { return d.source.x; })
+                    .attr("y1", function(d) { return d.source.y; })
+                    .attr("x2", function(d) { return d.target.x; })
+                    .attr("y2", function(d) { return d.target.y; });
+
+                node.attr("cx", function(d) { return d.x; })
+                    .attr("cy", function(d) { return d.y; });
+              });
+            });
+        }
+        return {
+            start : start
+        }
+    };
+    var dalian = function(){
+        return {
+            start : function(){
+                $('.dalian').show();
+                var page2MainEl = $('.page2-content');
+                page2MainEl.html('<div class="dalian">敬请期待大连</div>');
+            }
+        }
+    };
+    var taiwan = function(){
+        return {
+            start : function(){
+                var page2MainEl = $('.page2-content');
+                page2MainEl.html('<div class="taiwan">敬请期待台湾</div>');
+            }
+        }
+    };
     $('.side-icon').on('click',function(e){
         pageSlider.sideSlide();
     });
