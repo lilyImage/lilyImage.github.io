@@ -137,7 +137,6 @@ header h1{
    display: block;
 }
 @media all and (min-width: 800px){
-    body{background:red;}
     .switch-page-main .location-head{
         -webkit-flex-flow:row wrap;
     }
