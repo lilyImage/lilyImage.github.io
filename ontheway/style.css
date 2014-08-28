@@ -110,10 +110,6 @@ header h1{
     overflow: hidden;
 
 }
-.switch-page-main .content li h3{
-    margin:10px;
-    font-size: 1.6em;
-}
 .switch-page-main .content li img{
     float: left;
     width: 64px;height: 64px;
@@ -125,9 +121,32 @@ header h1{
     overflow: hidden;
     text-align: center;
 }
+.switch-page-main .location-head{
+    display: -webkit-box;
+    display: -webkit-flex;
+    display: flex;
+    -webkit-flex-flow:column wrap;
+    flex-flow:column wrap;
+}
+.switch-page-main .location-head h3{
+    margin:10px;
+    font-size: 1.6em;
+    display: block;
+}
 .switch-page-main .content li .time{
-    position: absolute;
-    right: 10px;top: 10px;
+   display: block;
+}
+@media all and (min-width: 800px){
+    body{background:red;}
+    .switch-page-main .location-head{
+        -webkit-flex-flow:row wrap;
+    }
+    .switch-page-main .location-head h3{
+        width: 100%
+    }
+    .switch-page-main .location-head p{
+        position: absolute;right: 10px;top:10px;
+    }
 }
 .switch-page-main .content li .location span{
     display: inline-block;
