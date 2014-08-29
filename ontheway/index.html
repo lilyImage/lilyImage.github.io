@@ -48,14 +48,7 @@
                           <img src="http://p3.qhimg.com/dr/120_120_/d/inn/b6c38cb6/IMG_20140211_151229.jpg" />
                           <div class="location">
                               <div class="location-head"><h3>台湾、香港</h3><p class="time">2014-02-10至2014-02-17</p></div>
-                              <span>东海大学</span>
-                              <span>逢甲夜市</span>
-                              <span>西子湾</span>
-                              <span>大狗英领事馆</span>
-                              <span>六合夜市</span>
-                              <span>垦丁</span>
-                              <span>台北诚品</span><span>国父纪念馆</span><span>西门町</span><span>台北101</span>
-                              <span>维多利亚港</span><span>星光大道</span><span>尖沙咀</span>
+                              <span>东海大学</span><span>逢甲夜市</span><span>西子湾</span><span>大狗英领事馆</span><span>六合夜市</span><span>垦丁</span><span>台北诚品</span><span>国父纪念馆</span><span>西门町</span><span>台北101</span><span>维多利亚港</span><span>星光大道</span><span>尖沙咀</span>
                           </div>
                       </a>
                   </li>
@@ -123,6 +116,7 @@
       </div>
     </div>
 </section>
+<section class="switch-page-mask"></section>
 <script src="zepto.min.js"></script>
 <script src="pageswitch.js"></script>
 <script>
@@ -136,10 +130,10 @@
     pageSlider.init({
         curHash: curHash,
         hashs : hashs
-    });
-    $('.side-icon').on('click',function(e){
-        pageSlider.sideSlide();
-    });
+    });    
+    $('.side-icon').on('click', function(){pageSlider.sideSlide()});
+    $('.switch-page-mask').on('click',function(){pageSlider.sideSlide()});
+    
 </script>
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="way.js"></script>

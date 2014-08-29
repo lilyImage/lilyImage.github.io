@@ -34,9 +34,9 @@ function XIAN(){
                        .attr("class","xian");
             var color = d3.scale.category20();
             var force = d3.layout.force()
-                .charge(-120)
+                .charge(-80)
                 .linkDistance(10)
-                .size([width, height]);
+                .size([width-10, height-10]);
 
             d3.json("cp.json", function(error, graph) {
               force

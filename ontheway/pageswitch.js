@@ -81,21 +81,27 @@ function PageSwitcher(){
         }
     }
 }
+
 /*
  * 侧边栏
+ * el:selector 选择器，往右边移动的主要部分
+ * maskel: selector选择器，遮罩住主要部分的mask
  */
 PageSwitcher.prototype.sideStateArr = [];
-PageSwitcher.prototype.sideSlide = function(el){
+PageSwitcher.prototype.sideSlide = function(el,maskel){
     this.dir = 'right40';
     this.reverseDir = 'left40';
     this.el = el ? el : '.switch-page-main';
+    this.maskel = maskel ? maskel : '.switch-page-mask';
     var self = this;
     if(self.sideStateArr.length == 0){
         $(self.el).addClass('page transition '+self.dir);
+        $(self.maskel).addClass('page transition ' + self.dir).show();
         self.sideStateArr.push(self.reverseDir);
     }else{
         $(self.el).removeClass(self.dir);
         $(self.el).addClass('center');
+        $(self.maskel).hide();
         self.sideStateArr.pop();
     }
 }
