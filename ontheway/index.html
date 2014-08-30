@@ -4,8 +4,9 @@
     <title>lilyh-on the way</title>
     <meta charset="utf-8" />
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no">
-    <link rel="stylesheet" href="pageswitch.css">
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="css/pageswitch.css" />
+    <link rel="stylesheet" href="css/style.css" />
+    <link rel="stylesheet" type="text/css" href="css/gallery.css" />
 </head>
 <body>
 <section class="side">
@@ -14,6 +15,10 @@
             <li>
                 <h3>(1)单页应用切换效果</h3>
                 <a href="https://github.com/lilyImage/pageSwitch">pageSwith github</a>
+            </li>
+            <li>
+                <h3>(2)大图预览</h3>
+                <a href="https://github.com/lilyH/gallery">gallery github</a>
             </li>
         </ul>
     </div>
@@ -117,8 +122,10 @@
     </div>
 </section>
 <section class="switch-page-mask"></section>
-<script src="zepto.min.js"></script>
-<script src="pageswitch.js"></script>
+<section id="gallary"></section>
+<!--单页应用切换-->
+<script src="lib/zepto.min.js"></script>
+<script src="com/pageswitch.js"></script>
 <script>
     var curHash = window.location.hash || '#page1',
         hashs = ['#page1','#page2','#page3'];
@@ -135,13 +142,18 @@
     $('.switch-page-mask').on('click',function(){pageSlider.sideSlide()});
     
 </script>
+<!--单页应用切换-->
+<!--业务相关-->
 <script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
 <script src="way.js"></script>
+<script src="lib/zepto-touch.js"></script>
+<script src="com/mobileGallery.js"></script>
 <script type="text/javascript">
     $('.page1-content li a').on('click',function(e){
         var id = $(this).data('type');
         var data = {
-            'xian' :  XIAN
+            'xian' :  XIAN,
+            'taiwan' : TAIWAN
         };
         if(data[id]){
           var func = new data[id]();
@@ -151,5 +163,7 @@
         func.start();       
     });
 </script>
+
+<!--业务相关-->
 </body>
 </html>

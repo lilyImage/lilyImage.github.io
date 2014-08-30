@@ -39,7 +39,7 @@ header h1{
     text-align: center;
     line-height: 24px;
     margin-right: 10px;
-    background: url(image/back.png) no-repeat;
+    background: url(../image/back.png) no-repeat;
     background-size: 23px auto;
     background-position: 10px 8px;
 }
@@ -109,7 +109,7 @@ header h1{
     -webkit-box-flex:1;
     overflow: auto;
 }
-.switch-page-main .content li{
+.switch-page-main .page1-content li{
     position: relative;
     margin:0px 5px 5px;
     border:1px solid #ddd;
@@ -117,13 +117,13 @@ header h1{
     overflow: hidden;
 
 }
-.switch-page-main .content li img{
+.switch-page-main .page1-content li img{
     float: left;
     width: 64px;height: 64px;
     margin:5px;
     border-radius: 35px
 }
-.switch-page-main .content li .location{
+.switch-page-main .page1-content li .location{
     margin-left: 80px;
     overflow: hidden;
     text-align: center;
@@ -141,8 +141,15 @@ header h1{
     font-size: 1.6em;
     display: block;
 }
-.switch-page-main .content li .time{
+.switch-page-main .page1-content li .time{
    display: block;
+}
+.switch-page-main .page1-content li .location span{
+    display: inline-block;
+    border: 1px solid #ccc;
+    padding: 10px;
+    border-radius: 5px;
+    margin: 5px 5px 5px 0;
 }
 @media all and (min-width: 800px){
     .switch-page-main .location-head{
@@ -156,14 +163,34 @@ header h1{
         position: absolute;right: 10px;top:10px;
     }
 }
-.switch-page-main .content li .location span{
-    display: inline-block;
-    border: 1px solid #ccc;
-    padding: 10px;
-    border-radius: 5px;
-    margin: 5px 5px 5px 0;
+/**台湾**/
+.switch-page-main .taiwan-content ul{
+  display: -webkit-box;
+  display: -webkit-flex;
+  display: flex;
+  
+  -webkit-flex-flow: row wrap;
+  justify-content: space-around;
+
+  -webkit-box-orient : horizontal;
 }
 
+.switch-page-main .taiwan-content li{
+  background: mintcream;
+  padding: 5px;
+  width: 200px;
+  height: 150px;
+  margin-top: 10px;
+  line-height: 150px;
+  color: white;
+  font-weight: bold;
+  font-size: 3em;
+  text-align: center;
+}
+.switch-page-main .taiwan-content li img{
+    max-width: 200px;
+    max-height: 150px;
+}
 /**SVG*/
 .node {
   stroke: #fff;

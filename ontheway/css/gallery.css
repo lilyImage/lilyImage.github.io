@@ -1,0 +1,149 @@
+html,body{margin: 0;padding: 0}
+ul,li{
+    margin: 0; padding : 0;list-style:none;
+}
+/**图片相框*/
+#gallery-mask{
+    position: absolute;
+    left:0px;
+    top:0px;
+    z-index: 10001;
+    width:100%;
+    height:100%;
+    min-height:100%;
+    overflow: hidden;
+    background-color: black
+}
+#gallery{
+    position: absolute;
+    left:0px;
+    top:0px;
+    z-index: 10002;
+    width:100%;
+    height:100%;
+    overflow: hidden;
+}
+
+
+#gallery_list div{
+    border: medium none;
+    position: absolute;
+    text-align: center;
+}
+#gallery #gallery_list img {
+    height:100%;
+    width:auto;
+    -moz-box-shadow:2px 2px 5px #333333; 
+    -webkit-box-shadow:2px 2px 5px #333333; 
+    box-shadow:2px 2px 5px #333333;
+}
+#gallery_list .cur img{
+}
+
+#gallery .pre_Con,#gallery .next_Con{
+     z-index: 102;
+     width: 45%;
+     position: absolute;
+     top: 0px;
+     bottom: 90px;
+     display: none
+}
+#gallery .pre_Con{
+    left: 0px;
+}
+#gallery .next_Con{
+    right: 0px;
+}
+
+#gallery a.pre_Btn,
+#gallery a.next_Btn,
+#gallery a.pre_Btn_Hover,
+#gallery a.next_Btn_Hover{
+    background: url(http://p3.qhimg.com/t013f00a860fbdb32ca.png) no-repeat;
+    _background : url(http://p7.qhimg.com/t01e2e405f5170306fc.gif) no-repeat;
+    height: 44px;
+    position: absolute;
+    width: 28px;
+    display: none
+}
+#gallery a.next_Btn{
+    right: 20px;
+    background-position: -35px 0px   
+}
+#gallery a.next_Btn:hover,
+#gallery a.next_Btn_Hover{
+     background-position: -35px -48px
+}
+#gallery a.pre_Btn{
+    left:20px;
+    background-position: 0px 0px
+}
+#gallery a.pre_Btn:hover,
+#gallery a.pre_Btn_Hover{
+    background-position: 0px -48px
+}
+
+
+#gallery .ft{
+    position: absolute;
+    bottom: 0px;
+    left: 0px;
+    height: 105px;
+    width: 100%
+}
+
+#gallery .ft ul{margin: 0 auto;width: 1000%}
+#gallery .ft .timg{
+    float: left;
+}
+#gallery .ft .timg img{
+    width: 100px;
+    height: 100px;
+    margin: 2px;
+    
+}
+#gallery .ft .timg img.cur{
+    border: 2px solid #4aa4e0;
+    margin:0;
+}
+
+/**phone*/
+#gallery .bd {
+    z-index:1;
+    height: 100%;
+    position: relative;
+}
+#gallery_p_list {
+    z-index: 1;
+}
+#gallery_p_list li {
+    position: absolute;
+    top: 10px;
+    left: 5px;
+    right: 5px;
+    bottom: 5px;
+    display: block;
+    overflow: hidden;
+    vertical-align: middle;
+    text-align: center;
+    background-image: url(../image/loading.png);
+    background-position: center center;
+    background-repeat: no-repeat;
+    background-size: 16px auto;
+}
+#gallery_p_list img {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    height: auto;
+    width: auto;
+    -moz-transform: translate3d(-50%, -50%, 0);
+    -webkit-transform: translate3d(-50%, -50%,0);
+    -o-transform: translate3d(-50%, -50%, 0);
+    -ms-transform: translate3d(-50%, -50%, 0);
+    transform: translate3d(-50%, -50%, 0);
+    max-width: 100%;
+    max-height: 100%;
+    -webkit-tap-highlight-color: rgba(0,0,0,0);
+    vertical-align: middle;
+}
