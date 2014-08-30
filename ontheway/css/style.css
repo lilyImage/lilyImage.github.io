@@ -173,6 +173,8 @@ header h1{
   justify-content: space-around;
 
   -webkit-box-orient : horizontal;
+  -webkit-box-align: center;
+  -webkit-box-pack : center;
 }
 
 .switch-page-main .taiwan-content li{

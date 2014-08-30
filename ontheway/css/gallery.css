@@ -31,13 +31,11 @@ ul,li{
     text-align: center;
 }
 #gallery #gallery_list img {
-    height:100%;
-    width:auto;
+    max-height:100%;
+    max-width: 100%;
     -moz-box-shadow:2px 2px 5px #333333; 
     -webkit-box-shadow:2px 2px 5px #333333; 
     box-shadow:2px 2px 5px #333333;
-}
-#gallery_list .cur img{
 }
 
 #gallery .pre_Con,#gallery .next_Con{
