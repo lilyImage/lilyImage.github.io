@@ -111,9 +111,10 @@ function TAIWAN(){
         if(!TAIWAN.init){
             TAIWAN.init = true;
             instance.page2MainEl.html(mainHtml);
-            $('.taiwan-content li').on("click",function(){
-               var item = $(this).data('index');
-               $('#gallery').gallery({
+          
+            $('.taiwan-content li').on("click",function(e){
+              var item = $(this).data('index');
+              $('#gallery').gallery({
                   imgInfo : Images,
                   currentIndex : item
                });

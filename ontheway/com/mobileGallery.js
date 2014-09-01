@@ -1,8 +1,10 @@
 /**
  * 基于zepto的mobile版本gallery
- * 依赖zepto.js 以及zepto-touch.js
+ * 依赖zepto.js
  * author lilyh
  * 2014-07-17
+ * 去掉对zepto-touch的依赖
+ * 2014-09-01
  */
 (function($, window, document, undefined) {
     var G = null,
@@ -16,7 +18,8 @@
             '</div>',
             '<div class="ft"></div>'
         ].join(''),
-        gList : {},
+        gListEl : null,
+        gListBdEl : null,
         gImgParentList:{},
         gImgList : {},
         gImgLen : 0,
@@ -30,33 +33,42 @@
     
     var Gallery = function(settings){
         var $settings = setSettings(settings);
-        
-        function closeGallary(){
-
+       
+        function closeGallary(e){
+            e.preventDefault();
             removeEventPhone();
             element.hide();
             elementMask.hide();
-            Config.gList.html('');
+            Config.gListEl.html('');
+            
         }
         
         /**手机版本*/
         function initEventPhone(){
            
-            $('#gallery_list').on('swipeRight', previewPrev);
-            $('#gallery_list').on('swipeLeft', previewNext);
-            $('#gallery .bd').on('tap',closeGallary);
+            //Config.gList.on('swipeRight', previewPrev);
+            //Config.gListEl[0].on('swipeleft', previewNext);
+            //$('#gallery .bd').on('tap',closeGallary);
+          
+            Config.gListBdEl[0].addEventListener('tap', closeGallary, false);
+            Config.gListEl[0].addEventListener('swipeleft', previewNext, false);
+            Config.gListEl[0].addEventListener('swiperight', previewPrev, false);
         }
         function removeEventPhone(){
-            $('#gallery_list').unbind('swipeRight', previewPrev);
-            $('#gallery_list').unbind('swipeLeft', previewNext);
-            $('#gallery .bd').unbind('tap',closeGallary);
+            //Config.gList.unbind('swipeRight', previewPrev);
+            //Config.gListEl[0].unbind('swipeleft', previewNext);
+            //$('#gallery .bd').unbind('tap',closeGallary);
+           
+            Config.gListBdEl[0].removeEventListener('tap', closeGallary, false);
+            Config.gListEl[0].removeEventListener('swipeleft', previewNext, false);
+            Config.gListEl[0].removeEventListener('swiperight', previewPrev, false);
         }
 
         /**
         *   向左滑动或者点击右箭头时，查看next图片
         */
         function previewNext() {
-           
+        
             var curIndex = $settings.currentIndex,
                 imgList = $settings.imgInfo,
                 imgLen = Config.gImgLen;
@@ -134,7 +146,7 @@
             }
         }
         function imgInitPhone(){
-            var ctn = Config.gList,
+            var ctn = Config.gListEl,
                 curIndex = parseInt($settings.currentIndex,10),
                 urls = $settings.imgInfo;
 
@@ -213,10 +225,13 @@
 
                 G = new Gallery(settings);
                 $(element).html(Config.gHTML);
-                Config.gList = $('#gallery_list');
+                Config.gListEl = $('#gallery_list');
                 Config.gImgLen = settings.imgInfo.length;
                 Config.gImgListPreBtn = $('#gallery .pre_Btn');
                 Config.gImgListNextBtn = $('#gallery .next_Btn');
+                Config.gListBdEl = $('#gallery .bd');
+                new Touch(Config.gListBdEl[0]);//初始化touch事件
+                new Touch(Config.gListEl[0]);        
 
             }else{
                 G._setSettings(settings);
