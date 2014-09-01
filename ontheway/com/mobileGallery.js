@@ -46,18 +46,11 @@
         /**手机版本*/
         function initEventPhone(){
            
-            //Config.gList.on('swipeRight', previewPrev);
-            //Config.gListEl[0].on('swipeleft', previewNext);
-            //$('#gallery .bd').on('tap',closeGallary);
-          
             Config.gListBdEl[0].addEventListener('tap', closeGallary, false);
             Config.gListEl[0].addEventListener('swipeleft', previewNext, false);
             Config.gListEl[0].addEventListener('swiperight', previewPrev, false);
         }
         function removeEventPhone(){
-            //Config.gList.unbind('swipeRight', previewPrev);
-            //Config.gListEl[0].unbind('swipeleft', previewNext);
-            //$('#gallery .bd').unbind('tap',closeGallary);
            
             Config.gListBdEl[0].removeEventListener('tap', closeGallary, false);
             Config.gListEl[0].removeEventListener('swipeleft', previewNext, false);
