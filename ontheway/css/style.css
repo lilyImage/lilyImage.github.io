@@ -165,16 +165,17 @@ header h1{
 }
 /**台湾**/
 .switch-page-main .taiwan-content ul{
-  display: -webkit-box;
-  display: -webkit-flex;
+  /**w3c*/
   display: flex;
-  
   -webkit-flex-flow: row wrap;
   justify-content: space-around;
-
-  -webkit-box-orient : horizontal;
+  /**android*/
+  display: -webkit-box;
+  display: -webkit-flex;
+  -webkit-box-orient : vertical;
   -webkit-box-align: center;
   -webkit-box-pack: justify;
+  /**ios*/
   -webkit-justify-content: space-between;
 }
 

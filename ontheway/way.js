@@ -95,7 +95,6 @@ function TAIWAN(){
       {url : 'http://p6.qhimg.com/t0133499eee6e798d75.jpg'},
       {url : 'http://p4.qhimg.com/t01e7d38f5ad6688577.jpg'},
       {url : 'http://p1.qhimg.com/t01c96ad218a4b9eda5.jpg'},
-      {url : 'http://p7.qhimg.com/t01c9c9f98e8a255c2d.jpg'},
       {url : 'http://p2.qhimg.com/t01032f593431942074.jpg'},
       {url : 'http://p7.qhimg.com/t01d78d7765acd215cc.jpg'},
       {url : 'http://p6.qhimg.com/t01b1ae53c9076a5a3b.jpg'},
