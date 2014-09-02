@@ -151,18 +151,6 @@ header h1{
     border-radius: 5px;
     margin: 5px 5px 5px 0;
 }
-@media all and (min-width: 800px){
-    .switch-page-main .location-head{
-        -webkit-flex-flow:row wrap;
-        -webkit-box-flex:horizontal;
-    }
-    .switch-page-main .location-head h3{
-        width: 100%
-    }
-    .switch-page-main .location-head p{
-        position: absolute;right: 10px;top:10px;
-    }
-}
 /**台湾**/
 .switch-page-main .taiwan-content ul{
   /**w3c*/
@@ -180,20 +168,43 @@ header h1{
 }
 
 .switch-page-main .taiwan-content li{
+  display: flex;
+  display: -webkit-box;
+  display: -webkit-flex;
+
   background: mintcream;
   padding: 5px;
-  width: 200px;
-  height: 150px;
-  margin:10px;
-  line-height: 150px;
+  width: 100px;
+  height: 80px;
+  margin:5px;
+  line-height: 80px;
   color: white;
   font-weight: bold;
   font-size: 3em;
   text-align: center;
 }
 .switch-page-main .taiwan-content li img{
-    max-width: 200px;
-    max-height: 150px;
+    max-width: 100px;
+    max-height: 80px;
+    margin: auto;
+}
+@media all and (min-width: 800px){
+    .switch-page-main .location-head{
+        -webkit-flex-flow:row wrap;
+        -webkit-box-flex:horizontal;
+    }
+    .switch-page-main .location-head h3{
+        width: 100%
+    }
+    .switch-page-main .location-head p{
+        position: absolute;right: 10px;top:10px;
+    }
+    .switch-page-main .taiwan-content li{
+        width: 200px;height: 150px;line-height: 150px;
+    }
+    .switch-page-main .taiwan-content li img{
+        max-width: 200px;max-height: 150px;
+    }
 }
 /**SVG*/
 .node {
