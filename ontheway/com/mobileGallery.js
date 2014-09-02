@@ -39,8 +39,7 @@
             removeEventPhone();
             element.hide();
             elementMask.hide();
-            Config.gListEl.html('');
-            
+            Config.gListEl.html('');    
         }
         
         /**手机版本*/

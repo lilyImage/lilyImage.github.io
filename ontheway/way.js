@@ -111,14 +111,17 @@ function TAIWAN(){
         if(!TAIWAN.init){
             TAIWAN.init = true;
             instance.page2MainEl.html(mainHtml);
-          
-            $('.taiwan-content li').on("click",function(e){
-              var item = $(this).data('index');
-              $('#gallery').gallery({
-                  imgInfo : Images,
-                  currentIndex : item
-               });
-            });
+            var els = document.getElementsByTagName('li');
+            for(var i=0; i<els.length ;i++){
+              new Touch(els[i]);
+              els[i].addEventListener('tap',function(e){
+                var item = $(this).data('index');
+                $('#gallery').gallery({
+                    imgInfo : Images,
+                    currentIndex : item
+                });
+              },false);
+            }
         }
     }
     return instance;

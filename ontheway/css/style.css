@@ -160,7 +160,7 @@ header h1{
   /**android*/
   display: -webkit-box;
   display: -webkit-flex;
-  -webkit-box-orient : vertical;
+  -webkit-box-orient : horizontal;
   -webkit-box-align: center;
   -webkit-box-pack: justify;
   /**ios*/
