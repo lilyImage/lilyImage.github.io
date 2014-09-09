@@ -54,7 +54,7 @@
                           <div class="location">
                               <div class="location-head"><h3>台湾、香港</h3><p class="time">2014-02-10至2014-02-17</p>
                               </div>
-                              <span>东海大学</span><span>逢甲夜市</span><span>西子湾</span><span>大狗英领事馆</span><span>六合夜市</span><span>垦丁</span><span>台北诚品</span><span>国父纪念馆</span><span>西门町</span><span>台北101</span><span>维多利亚港</span><span>星光大道</span><span>尖沙咀</span>
+                              <span>东海大学</span><span>逢甲夜市</span><span>西子湾</span><span>大狗英领事馆</span><span>六合夜市</span><span>垦丁</span><span>南投灯会</span><span>台北诚品</span><span>国父纪念馆</span><span>西门町</span><span>台北101</span><span>维多利亚港</span><span>星光大道</span><span>尖沙咀</span>
                           </div>
                       </a>
                   </li>
@@ -151,6 +151,7 @@
 <script src="com/mobileGallery.js"></script>
 <script type="text/javascript">
     $('.page1-content li a').on('click',function(e){
+        e.stopPropagation();
         var id = $(this).data('type');
         var data = {
             'xian' :  XIAN,

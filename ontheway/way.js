@@ -111,7 +111,7 @@ function TAIWAN(){
         if(!TAIWAN.init){
             TAIWAN.init = true;
             instance.page2MainEl.html(mainHtml);
-            var els = document.getElementsByTagName('li');
+            var els = $('.taiwan-content li');
             for(var i=0; i<els.length ;i++){
               new Touch(els[i]);
               els[i].addEventListener('tap',function(e){

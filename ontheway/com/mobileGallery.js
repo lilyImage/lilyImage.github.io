@@ -202,7 +202,6 @@
         },options);
         
         var init = function(){
-
             if(!G){
                 var galleryEl = document.createElement("div"),
                     maskEl = document.createElement("div");
