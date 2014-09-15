@@ -108,8 +108,8 @@ function TAIWAN(){
     }
     mainHtml += '</ul></div>';
     instance.start = function(){
-        if(!TAIWAN.init){
-            TAIWAN.init = true;
+        if(!WAYCON.init){
+            WAYCON.init = true;
             instance.page2MainEl.html(mainHtml);
             var els = $('.taiwan-content li');
             for(var i=0; i<els.length ;i++){
