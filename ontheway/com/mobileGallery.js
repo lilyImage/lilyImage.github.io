@@ -6,7 +6,7 @@
  * 去掉对zepto-touch的依赖
  * 2014-09-01
  */
-(function($, window, document, undefined) {
+define(function($, window, document, undefined) {
     var G = null,
         element = null,
         elementMask = null;
@@ -241,6 +241,6 @@
             setPrev : MyGallery.previewPrev,
             setNext : MyGallery.previewNext,
             close : MyGallery.closeGallary
-        }
+        };
     };
-})(Zepto, window, document);
+}(Zepto, window, document));

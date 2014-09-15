@@ -2,7 +2,7 @@
  *  在tap.js的基础上增加了swipe的功能
  *  tap.js 地址:https://github.com/alexgibson/tap.js
  */
-(function (window, document) {
+define(function (window, document) {
 
     'use strict';
 

@@ -124,13 +124,25 @@
 </section>
 <section class="switch-page-mask"></section>
 <section id="gallary"></section>
-<!--单页应用切换-->
+
 <script src="lib/zepto.min.js"></script>
-<script src="com/pageswitch.js"></script>
+<script src="lib/require.min.js"></script>
 <script>
-    var curHash = window.location.hash || '#page1',
+require.config({
+  paths : {
+    "pageSwitch" : "com/pageswitch",
+    "wayBase" : "wayBase",
+    "wayXian" : "wayXian",
+    "wayTaiwan" : "wayTaiwan",
+    "touchEvent" : "com/touch",
+    "mg" : "com/mobileGallery"
+  }
+});
+require(['pageSwitch','wayBase','wayTaiwan'], function (PageSwitcher,wayBase,TAIWAN){
+    /**单页切换*/
+　　var curHash = window.location.hash || '#page1',
         hashs = ['#page1','#page2','#page3'];
-    
+  
     var pageSlider = new PageSwitcher();
     $(window).on('hashchange', function(){
         pageSlider.switchPage();//切换page
@@ -139,33 +151,25 @@
         curHash: curHash,
         hashs : hashs
     });    
+
     $('.side-icon').on('click', function(){pageSlider.sideSlide()});
-    $('.switch-page-mask').on('click',function(){pageSlider.sideSlide()});
-    
-</script>
-<!--单页应用切换-->
-<!--业务相关-->
-<script src="http://d3js.org/d3.v3.min.js" charset="utf-8"></script>
-<script src="com/touch.js"></script>
-<script src="way.js"></script>
-<script src="com/mobileGallery.js"></script>
-<script type="text/javascript">
+    $('.switch-page-mask').on('click',function(){pageSlider.sideSlide()}); 
+ 
     $('.page1-content li a').on('click',function(e){
-        e.stopPropagation();
         var id = $(this).data('type');
         var data = {
-            'xian' :  XIAN,
             'taiwan' : TAIWAN
         };
+
         if(data[id]){
           var func = new data[id]();
         }else{
-          var func = new WAY();
+          var func = new wayBase.WAY();
         }
         func.start();       
-    });
+    });  
+});
 </script>
 
-<!--业务相关-->
 </body>
 </html>
