@@ -34,14 +34,13 @@ define(['wayBase','touchEvent','mg'],function(wayBase){
 	            instance.page2MainEl.html(mainHtml);
 	            var els = $('.taiwan-content li');
 	            for(var i=0; i<els.length ;i++){
-	              new Touch(els[i]);
-	              els[i].addEventListener('tap',function(e){
-	                var item = $(this).data('index');
-	                $('#gallery').gallery({
-	                    imgInfo : Images,
-	                    currentIndex : item
-	                });
-	              },false);
+	                $(els[i]).on('tap',function(e){
+	            		 var item = $(this).data('index');
+		                $('#gallery').gallery({
+		                    imgInfo : Images,
+		                    currentIndex : item
+		                });
+	            	});
 	            }
 	        }
 	    }

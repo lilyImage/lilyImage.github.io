@@ -1,10 +1,8 @@
 /**
  * 基于zepto的mobile版本gallery
- * 依赖zepto.js
+ * 依赖zepto.js 以及zepto-touch.js
  * author lilyh
  * 2014-07-17
- * 去掉对zepto-touch的依赖
- * 2014-09-01
  */
 define(function($, window, document, undefined) {
     var G = null,
@@ -39,21 +37,24 @@ define(function($, window, document, undefined) {
             removeEventPhone();
             element.hide();
             elementMask.hide();
-            Config.gListEl.html('');    
+            Config.gListEl.html('');
+            
         }
         
         /**手机版本*/
         function initEventPhone(){
            
-            Config.gListBdEl[0].addEventListener('tap', closeGallary, false);
-            Config.gListEl[0].addEventListener('swipeleft', previewNext, false);
-            Config.gListEl[0].addEventListener('swiperight', previewPrev, false);
+           
+            Config.gListBdEl.on('tap', closeGallary, false);
+            Config.gListEl.on('swipeleft', previewNext, false);
+            Config.gListEl.on('swiperight', previewPrev, false);
         }
         function removeEventPhone(){
            
-            Config.gListBdEl[0].removeEventListener('tap', closeGallary, false);
-            Config.gListEl[0].removeEventListener('swipeleft', previewNext, false);
-            Config.gListEl[0].removeEventListener('swiperight', previewPrev, false);
+           
+            Config.gListBdEl.off('tap', closeGallary, false);
+            Config.gListEl.off('swipeleft', previewNext, false);
+            Config.gListEl.off('swiperight', previewPrev, false);
         }
 
         /**
@@ -202,6 +203,7 @@ define(function($, window, document, undefined) {
         },options);
         
         var init = function(){
+
             if(!G){
                 var galleryEl = document.createElement("div"),
                     maskEl = document.createElement("div");
@@ -221,8 +223,6 @@ define(function($, window, document, undefined) {
                 Config.gImgListPreBtn = $('#gallery .pre_Btn');
                 Config.gImgListNextBtn = $('#gallery .next_Btn');
                 Config.gListBdEl = $('#gallery .bd');
-                new Touch(Config.gListBdEl[0]);//初始化touch事件
-                new Touch(Config.gListEl[0]);        
 
             }else{
                 G._setSettings(settings);
@@ -241,6 +241,6 @@ define(function($, window, document, undefined) {
             setPrev : MyGallery.previewPrev,
             setNext : MyGallery.previewNext,
             close : MyGallery.closeGallary
-        };
+        }
     };
 }(Zepto, window, document));
