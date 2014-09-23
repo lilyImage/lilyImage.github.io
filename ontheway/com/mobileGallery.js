@@ -192,7 +192,7 @@ define(function($, window, document, undefined) {
             closeGallary : closeGallary
         }
     };
-    $.fn.gallery = function(options) {
+    var myGallery = function(options) {
         //var element = this;
         
        
@@ -243,4 +243,5 @@ define(function($, window, document, undefined) {
             close : MyGallery.closeGallary
         }
     };
+    window.myGallery = myGallery;
 }(Zepto, window, document));

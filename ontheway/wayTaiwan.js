@@ -35,8 +35,8 @@ define(['wayBase','touchEvent','mg'],function(wayBase){
 	            var els = $('.taiwan-content li');
 	            for(var i=0; i<els.length ;i++){
 	                $(els[i]).on('tap',function(e){
-	            		 var item = $(this).data('index');
-		                $('#gallery').gallery({
+	            		var item = $(this).data('index');
+		                myGallery({
 		                    imgInfo : Images,
 		                    currentIndex : item
 		                });
